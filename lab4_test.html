@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 4 JSON Input</title>
+</head>
+<body>
+
+    <h2>Lab 4: Handling JSON Input</h2>
+
+    <button onclick="sendJSON()">Send JSON</button>
+
+    <pre id="output"></pre>
+
+    <script>
+        async function sendJSON() {
+
+            const response = await fetch("lab4_input.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: "admin",
+                    password: "1234"
+                })
+            });
+
+            const result = await response.text();
+
+            document.getElementById("output").textContent = result;
+        }
+    </script>
+
+</body>
+</html>
